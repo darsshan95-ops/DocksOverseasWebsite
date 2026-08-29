@@ -70,11 +70,17 @@
 
   <!-- Banana -->
   <symbol id="p-banana" viewBox="0 0 100 100">
-    <path d="M18 46c0 20 14 36 34 36 17 0 30-11 32-24 1-5-6-7-8-2-4 10-13 17-24 17-15 0-25-12-25-27 0-5-9-5-9 0z" fill="url(#gBanana)" opacity=".55"/>
-    <path d="M24 38c0 21 14 37 34 37 18 0 31-11 33-25 1-5-7-7-9-2-4 11-13 18-24 18-16 0-26-13-26-28 0-5-8-5-8 0z" fill="url(#gBanana)"/>
-    <path d="M28 40c1 17 12 29 27 30" stroke="#fff" stroke-opacity=".3" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <circle cx="28" cy="38" r="4" fill="#6b4a12"/>
-    <circle cx="88" cy="50" r="3.4" fill="#6b4a12"/>
+    <g transform="rotate(17 50 50)">
+      <!-- body: crescent struck from two offset circles, so it tapers to a
+           cusp at each end the way a banana does -->
+      <path d="M80.1 34.2A34 34 0 1 0 34.2 80.1A33 33 0 0 1 80.1 34.2Z" fill="url(#gBanana)"/>
+      <!-- one short highlight along the fattest part of the outer curve -->
+      <path d="M45.5 24.4A26 26 0 0 0 24.4 45.5" fill="none"
+            stroke="#fff" stroke-opacity=".45" stroke-width="6" stroke-linecap="round"/>
+      <!-- stem, and the darker blossom end -->
+      <path d="M79 33l7-5" stroke="#7a5412" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="35.4" cy="78.6" r="3.4" fill="#5c3f0e"/>
+    </g>
   </symbol>
 
   <!-- Suran / elephant foot yam -->
@@ -166,10 +172,11 @@
 
       <!-- The form composes a pre-filled email. To collect submissions on a server
            instead, point the form at your endpoint and remove the JS handler. -->
-      <form class="form" id="enquiry" data-to="docksoverseas@gmail.com" novalidate>
+      <form class="form" id="enquiry" method="POST" data-to="docksoverseas@gmail.com">
+        <p class="form-note form-legend"><span class="req" aria-hidden="true">*</span> Required</p>
         <div class="field-row">
           <div class="field">
-            <label for="f-name">Your name</label>
+            <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
             <input id="f-name" name="name" type="text" autocomplete="name" required>
           </div>
           <div class="field">
@@ -180,7 +187,7 @@
 
         <div class="field-row">
           <div class="field">
-            <label for="f-email">Email</label>
+            <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input id="f-email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="field">
@@ -227,10 +234,13 @@
           <textarea id="f-message" name="message" placeholder="Grade and calibre, packing and labelling, target month, whether you have shipped this line before…"></textarea>
         </div>
 
-        <div class="form-status" role="status">
-          Your email app should now be open with the enquiry filled in — just press send.
-          If nothing happened, write to <a class="tlink" href="mailto:docksoverseas@gmail.com">docksoverseas@gmail.com</a>.
+        <!-- Bots fill this in; people never see it. A filled value is dropped. -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
+
+        <div class="form-status" role="status" aria-live="polite"></div>
 
         <button class="btn" type="submit">Send enquiry <span class="arrow" aria-hidden="true">→</span></button>
         <p class="form-note">We use your details only to answer this enquiry. No lists, no forwarding.</p>

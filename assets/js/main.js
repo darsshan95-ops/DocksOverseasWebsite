@@ -301,15 +301,59 @@
     setActive(0);
   }
 
-  /* ---------- enquiry form ---------------------------------------------
-     No backend here on purpose: the form composes a well-formatted mail to
-     the sales address. Swap ACTION below for a real endpoint when you have
-     one (Formspree / Netlify Forms / your own handler).                     */
+  /* ====================================================================
+     ENQUIRY FORM  —  configure this to receive enquiries on the server.
+
+     Paste your endpoint below and the form posts to it properly: the
+     visitor stays on the page and sees a confirmation. Leave it blank and
+     the form falls back to opening the visitor's mail app, which works but
+     depends on them having mail set up.
+
+       Web3Forms  — no account needed. Get a key at web3forms.com (enter
+                    your address, they email you an access key). Set
+                    endpoint to 'https://api.web3forms.com/submit' and put
+                    the key in accessKey.
+
+       Formspree  — sign up at formspree.io, create a form, then set
+                    endpoint to the URL they give you (https://formspree.io/f/xxxx)
+                    and leave accessKey blank.
+
+     Any endpoint that accepts a POST and answers with 2xx will work.
+     ==================================================================== */
+  var ENQUIRY = {
+    endpoint:  'https://script.google.com/macros/s/AKfycbyE_WIjk-DMwr4wJqzhblqhu4TjgH_VCJR1z_Joq98_nbzqutfQpStLZCY62L_He0JQ/exec',
+    accessKey: ''
+  };
+
   var form = $('#enquiry');
   if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var d = new FormData(form);
+    var statusEl = $('.form-status', form);
+    var submitBtn = $('button[type="submit"]', form);
+    var btnLabel = submitBtn ? submitBtn.innerHTML : '';
+    var configured = !!ENQUIRY.endpoint;
+
+    if (configured) {
+      form.setAttribute('action', ENQUIRY.endpoint);
+      if (ENQUIRY.accessKey) {
+        var key = document.createElement('input');
+        key.type = 'hidden'; key.name = 'access_key'; key.value = ENQUIRY.accessKey;
+        form.appendChild(key);
+      }
+      var subject = document.createElement('input');
+      subject.type = 'hidden'; subject.name = 'subject';
+      subject.value = 'Website enquiry — Docks Overseas';
+      form.appendChild(subject);
+    }
+
+    function say(msg, kind) {
+      if (!statusEl) return;
+      statusEl.innerHTML = msg;
+      statusEl.classList.add('show');
+      statusEl.classList.toggle('is-error', kind === 'error');
+      statusEl.classList.toggle('is-working', kind === 'working');
+    }
+
+    function mailFallback(d) {
       var body = [
         'Name: '     + (d.get('name') || ''),
         'Company: '  + (d.get('company') || ''),
@@ -322,14 +366,51 @@
         '',
         d.get('message') || ''
       ].join('\n');
-
-      var href = 'mailto:' + form.dataset.to +
+      window.location.href = 'mailto:' + form.dataset.to +
         '?subject=' + encodeURIComponent('Enquiry — ' + (d.get('produce') || 'Fresh produce')) +
         '&body=' + encodeURIComponent(body);
+      say('Your email app should now be open with the enquiry filled in — just press send. ' +
+          'If nothing happened, write to <a class="tlink" href="mailto:' + form.dataset.to + '">' +
+          form.dataset.to + '</a>.');
+    }
 
-      window.location.href = href;
-      var status = $('.form-status', form);
-      if (status) status.classList.add('show');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      var d = new FormData(form);
+      if (d.get('website')) return;        // honeypot tripped: silently drop
+      d.delete('website');
+
+      if (!configured) { mailFallback(d); return; }
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+      say('Sending your enquiry…', 'working');
+
+      fetch(ENQUIRY.endpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: d
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        /* Apps Script and Web3Forms both answer 200 even when they refuse the
+           submission, so trust the payload rather than the status code. */
+        return res.text().then(function (body) {
+          var payload = null;
+          try { payload = JSON.parse(body); } catch (ignore) {}
+          if (payload && payload.success === false) {
+            throw new Error(payload.message || 'rejected');
+          }
+          form.reset();
+          say('Thank you — your enquiry is with us. We will come back to you by email.');
+        });
+      }).catch(function () {
+        say('Something went wrong sending that. Please email us directly at ' +
+            '<a class="tlink" href="mailto:' + form.dataset.to + '">' + form.dataset.to + '</a>.',
+            'error');
+      }).then(function () {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnLabel; }
+      });
     });
   }
 

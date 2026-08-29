@@ -56,44 +56,94 @@ too; just do not edit the region between `<!--SPRITE:start-->` and
 
 ## The enquiry form
 
-Right now the form opens the visitor's email app with everything filled in and
-addressed to the `data-to` address on the `<form>` tag. That works everywhere
-and needs no account, but it depends on the visitor having mail set up.
+Configuration lives in the `ENQUIRY` block in `assets/js/main.js`. Whatever it
+points at, the visitor stays on the page: the button reads "Sending…", then a
+thank-you appears and the form clears. If the request fails they get an error
+naming your email address, so an enquiry is never silently lost. Blank the
+`endpoint` and the form falls back to opening the visitor's mail app.
 
-To collect submissions properly instead, pick a form service (Formspree,
-Netlify Forms, Basin) and:
+The form carries a hidden "Website" field. People never see it; bots fill it
+in, and any submission with it filled is dropped before it is sent.
 
-1. Put their endpoint on the form: `<form action="https://…" method="POST">`
-2. Delete the `enquiry form` block near the bottom of `assets/js/main.js`.
+### Currently live: your own Google Sheet
 
-## The produce rotator
+```js
+var ENQUIRY = {
+  endpoint:  'https://script.google.com/macros/s/AKfycbyE.../exec',
+  accessKey: ''
+};
+```
 
-The home page shows the produce on a ring you can spin — drag it, click a piece
-of fruit, use the arrows, or tab to it and press the left/right arrow keys. It
-advances on its own every few seconds, and stops doing that as soon as you touch
-or hover it.
+Each enquiry appends a row to your "Enquiries" sheet and emails a copy to
+docksoverseas@gmail.com, with reply-to set to the buyer so replying in Gmail
+goes straight back to them. The script behind it is `tools/enquiry-endpoint.js`
+— see below for how it was set up and how to change it.
 
-The six description panels are ordinary HTML sitting in `.rot-panel`. With
-JavaScript switched off they simply stack and stay readable, so nothing is
-hidden behind the animation.
+The endpoint URL is public, as it has to be. The hidden honeypot field is what
+keeps that from becoming a spam funnel.
 
-## Adding a produce line
+**Web3Forms** was the previous setup and still works if you ever want to fall
+back to it — set `endpoint` to `https://api.web3forms.com/submit` and
+`accessKey` to `56c69f48-b953-49f5-93ec-b5db540d34b3`.
 
-1. Add a `<symbol id="p-yourfruit">` to `partials/sprite.html`, then `sh build.sh`.
-2. In `index.html`, copy one `.pod` button inside `.ring` and one matching
-   `.rot-item` in `.rot-panel`. Both are numbered with `data-i`, and the pod's
-   `--a` is its angle on the ring — renumber all of them so the angles divide
-   360° evenly (six items = 60° apart, seven = 51deg, and so on).
-3. Copy a `.panel` block in `produce.html`, changing `#p-pom` to `#p-yourfruit`.
-4. Add it to the `<select id="f-produce">` list in `contact.html`.
+### How the Google Sheet endpoint was set up
 
-## Replacing the logo
+`tools/enquiry-endpoint.js` is the Google Apps Script behind the live endpoint.
+It writes each enquiry to a spreadsheet you own and emails you a copy. No third
+party holds the data and there is no monthly cap. To rebuild or move it:
 
-`assets/img/` holds three generated files. To regenerate them from a new
-source image, recolour the artwork to near-white for `logo-light.png` (the site
-runs on a dark ground, so the navy original disappears against it) and keep the
-navy version as `logo.png`. The site references `logo-light.png` in the header,
-the footer and the loading screen, and `favicon.png` in the tab.
+1. Create a Google Sheet — call it something like "Docks Overseas — Enquiries".
+2. In that sheet: **Extensions → Apps Script**.
+3. Delete the placeholder `function myFunction() {}`, paste the whole contents
+   of `tools/enquiry-endpoint.js`, and save.
+
+> **If step 2 shows "Sorry, unable to open the file at present"** that is a
+> Google multi-account bug, not a problem with the sheet. Either sign out of
+> every Google account except the one that owns the sheet (or open it in an
+> incognito window), or skip the menu entirely: go to script.google.com, make
+> a **New project**, paste the script there, and set `SHEET_ID` at the top of
+> the script to the long id in your sheet's URL between `/d/` and `/edit`.
+> Everything else below is identical.
+4. **Deploy → New deployment**. Click the gear, choose **Web app**, then set:
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. **Deploy**, then authorise it. Google will warn that the app is unverified
+   because you wrote it yourself — click **Advanced → Go to (project name)
+   → Allow**.
+6. Copy the **Web app URL**. It ends in `/exec`.
+7. Put it in the config and clear the access key:
+
+```js
+var ENQUIRY = {
+  endpoint:  'https://script.google.com/macros/s/AKfy.../exec',
+  accessKey: ''
+};
+```
+
+The sheet builds its own header row on the first submission. Emails go to the
+address in `NOTIFY_TO` at the top of the script, with reply-to set to the
+buyer, so replying from Gmail goes straight back to them. Set `NOTIFY_TO` to
+an empty string if you only want rows in the sheet.
+
+The script reports a `VERSION` number from its `/exec` URL. Open that URL in a
+browser: if the version shown does not match `VERSION` at the top of
+`tools/enquiry-endpoint.js`, the editor has your changes but the live endpoint
+does not — deploy a new version. Live at the time of writing: **v3**.
+
+Values are written as plain text rather than left to Sheets' own parsing. A
+phone number beginning with `+` would otherwise be read as a formula and land
+in the sheet as `#ERROR!`, losing the number.
+
+Two things that catch people out:
+
+- **After editing the script you must deploy a new version.** Saving alone
+  changes nothing on the live endpoint. Deploy → Manage deployments → edit →
+  Version: New version.
+- **The endpoint URL is public**, like the Web3Forms key. The honeypot is what
+  keeps that from becoming a spam funnel.
+
+Adding a field later means adding it to the form, then to `FIELDS` and
+`LABELS` in the script — the column and the email line follow automatically.
 
 ## The palette
 
