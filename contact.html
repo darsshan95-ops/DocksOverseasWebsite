@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Docks Overseas</title>
+<meta name="description" content="Request a quote for pomegranate, chilli, husked coconut, banana or suran. Tell us the line, the market and the month.">
+<meta name="theme-color" content="#f7f2e8">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<!--SPRITE:start-->
+<svg class="sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <radialGradient id="gPom" cx="34%" cy="26%">
+      <stop offset="0" stop-color="#ff9179"/><stop offset="52%" stop-color="#e2453f"/><stop offset="100%" stop-color="#87181f"/>
+    </radialGradient>
+    <linearGradient id="gChilli" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff6a4d"/><stop offset="55%" stop-color="#d8362c"/><stop offset="100%" stop-color="#8d1a18"/>
+    </linearGradient>
+    <radialGradient id="gCoco" cx="34%" cy="26%">
+      <stop offset="0" stop-color="#e0ac74"/><stop offset="55%" stop-color="#a86c36"/><stop offset="100%" stop-color="#5c3a1c"/>
+    </radialGradient>
+    <linearGradient id="gBanana" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#ffe07a"/><stop offset="50%" stop-color="#f2b23e"/><stop offset="100%" stop-color="#b3761a"/>
+    </linearGradient>
+    <radialGradient id="gSuran" cx="36%" cy="24%">
+      <stop offset="0" stop-color="#c9a488"/><stop offset="55%" stop-color="#8e6450"/><stop offset="100%" stop-color="#4b3126"/>
+    </radialGradient>
+    <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#57e0b8"/><stop offset="100%" stop-color="#1c7d63"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pomegranate -->
+  <symbol id="p-pom" viewBox="0 0 100 100">
+    <ellipse cx="50" cy="59" rx="33" ry="32" fill="url(#gPom)"/>
+    <path d="M41 30 l4-11 3 7 2-9 3 9 3-7 4 11 z" fill="#8d2a24"/>
+    <path d="M63 33c7-4 14-11 16-19-9 1-16 6-20 13z" fill="url(#gLeaf)"/>
+    <ellipse cx="38" cy="46" rx="10" ry="6.5" fill="#fff" opacity=".22" transform="rotate(-28 38 46)"/>
+    <g fill="#fff" opacity=".16">
+      <circle cx="58" cy="62" r="3"/><circle cx="66" cy="54" r="2.2"/><circle cx="52" cy="74" r="2.4"/><circle cx="63" cy="72" r="1.8"/>
+    </g>
+  </symbol>
+
+  <!-- Chilli -->
+  <symbol id="p-chilli" viewBox="0 0 100 100">
+    <path d="M62 27c11 15 8 36-8 50-11 10-25 14-31 8-4-4-1-11 7-14 14-5 23-16 26-31 1-7 3-11 6-13z" fill="url(#gChilli)"/>
+    <path d="M60 30c-4 14-11 24-22 31" stroke="#fff" stroke-opacity=".22" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M58 26c-1-7 3-12 11-13" stroke="url(#gLeaf)" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <ellipse cx="61" cy="26" rx="8" ry="5" fill="#2b8f6f" transform="rotate(-24 61 26)"/>
+  </symbol>
+
+  <!-- Husked coconut -->
+  <symbol id="p-coconut" viewBox="0 0 100 100">
+    <circle cx="50" cy="54" r="32" fill="url(#gCoco)"/>
+    <g stroke="#fff" stroke-opacity=".13" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M28 38c8 6 14 16 16 28"/><path d="M40 28c6 9 10 21 10 34"/><path d="M54 26c3 11 3 24 0 35"/><path d="M67 32c-1 11-5 21-11 29"/>
+    </g>
+    <g fill="#2c1a0b">
+      <circle cx="42" cy="34" r="3.6"/><circle cx="53" cy="30" r="3.6"/><circle cx="49" cy="41" r="3.2"/>
+    </g>
+    <ellipse cx="36" cy="44" rx="9" ry="6" fill="#fff" opacity=".18" transform="rotate(-30 36 44)"/>
+  </symbol>
+
+  <!-- Banana -->
+  <symbol id="p-banana" viewBox="0 0 100 100">
+    <path d="M18 46c0 20 14 36 34 36 17 0 30-11 32-24 1-5-6-7-8-2-4 10-13 17-24 17-15 0-25-12-25-27 0-5-9-5-9 0z" fill="url(#gBanana)" opacity=".55"/>
+    <path d="M24 38c0 21 14 37 34 37 18 0 31-11 33-25 1-5-7-7-9-2-4 11-13 18-24 18-16 0-26-13-26-28 0-5-8-5-8 0z" fill="url(#gBanana)"/>
+    <path d="M28 40c1 17 12 29 27 30" stroke="#fff" stroke-opacity=".3" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="28" cy="38" r="4" fill="#6b4a12"/>
+    <circle cx="88" cy="50" r="3.4" fill="#6b4a12"/>
+  </symbol>
+
+  <!-- Suran / elephant foot yam -->
+  <symbol id="p-suran" viewBox="0 0 100 100">
+    <path d="M50 24c15 0 27 6 31 17 4 12-2 25-13 33-6 5-12 8-18 8s-12-3-18-8C21 66 15 53 19 41c4-11 16-17 31-17z" fill="url(#gSuran)"/>
+    <g stroke="#000" stroke-opacity=".22" stroke-width="2.4" fill="none" stroke-linecap="round">
+      <path d="M34 32c-4 12-3 24 3 34"/><path d="M50 27c-2 14-2 30 0 43"/><path d="M66 32c4 12 3 24-3 34"/>
+    </g>
+    <path d="M50 26c0-7-3-11-9-13 7-2 12 1 14 6" fill="#3f7d4e"/>
+    <ellipse cx="38" cy="38" rx="9" ry="6" fill="#fff" opacity=".13" transform="rotate(-28 38 38)"/>
+  </symbol>
+
+  <!-- Container ship, bow to the right -->
+  <symbol id="p-ship" viewBox="0 0 320 120">
+    <path d="M22 74h276c-4 16-14 28-26 28H50c-14 0-24-11-28-28z" fill="#1b2c55"/>
+    <path d="M22 74h276l-6 8H26z" fill="#2b4079"/>
+    <rect x="30" y="44" width="42" height="30" rx="3" fill="#22345f"/>
+    <rect x="38" y="30" width="26" height="16" rx="2" fill="#2b4079"/>
+    <rect x="46" y="16" width="7" height="16" rx="2" fill="#22345f"/>
+    <g>
+      <rect x="80"  y="56" width="26" height="18" fill="#2b4079"/>
+      <rect x="80"  y="42" width="26" height="13" fill="#b0413b" opacity=".9"/>
+      <rect x="108" y="50" width="26" height="24" fill="#33487d"/>
+      <rect x="108" y="38" width="26" height="11" fill="#2e7d6b" opacity=".9"/>
+      <rect x="136" y="56" width="26" height="18" fill="#2b4079"/>
+      <rect x="136" y="44" width="26" height="11" fill="#33487d"/>
+      <rect x="164" y="48" width="26" height="26" fill="#33487d"/>
+      <rect x="164" y="36" width="26" height="11" fill="#b08640" opacity=".95"/>
+      <rect x="192" y="56" width="26" height="18" fill="#2b4079"/>
+      <rect x="220" y="52" width="26" height="22" fill="#33487d"/>
+      <rect x="248" y="60" width="22" height="14" fill="#2b4079"/>
+    </g>
+    <path d="M298 74c6-2 12-6 16-12-4-2-10-3-16-3z" fill="#22345f"/>
+  </symbol>
+
+</svg>
+<!--SPRITE:end-->
+
+<div class="loader" aria-hidden="true">
+  <img src="assets/img/logo.png" alt="" width="623" height="900">
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="index.html" aria-label="Docks Overseas — home">
+    <img class="brand-mark" src="assets/img/logo.png" alt="" width="623" height="900">
+    <span class="brand-text">Docks <em>Overseas</em></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="produce.html">Produce</a>
+    <a href="index.html#process">How we ship</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </nav>
+  <a class="btn btn--sm" href="contact.html">Request a quote <span class="arrow" aria-hidden="true">→</span></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="produce.html">Produce</a>
+  <a href="index.html#process">How we ship</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main>
+
+<section class="page-head">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="shell">
+    <p class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</p>
+    <h1 data-words style="max-width:15ch">Tell us what you need landed.</h1>
+    <p class="lede" style="margin-top:1.6rem" data-reveal>
+      The more you give us up front — line, grade, market, month, volume — the
+      faster the answer comes back.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell contact-grid">
+
+    <div class="card" data-reveal>
+      <h2 style="font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem);margin-bottom:1.4rem">Request a quote</h2>
+
+      <!-- The form composes a pre-filled email. To collect submissions on a server
+           instead, point the form at your endpoint and remove the JS handler. -->
+      <form class="form" id="enquiry" data-to="docksoverseas@gmail.com" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-company">Company</label>
+            <input id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone / WhatsApp</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-country">Destination market</label>
+            <input id="f-country" name="country" type="text" placeholder="e.g. UAE, Qatar, Oman, UK">
+          </div>
+          <div class="field">
+            <label for="f-produce">Produce</label>
+            <select id="f-produce" name="produce">
+              <option>Pomegranate</option>
+              <option>Green / red chilli</option>
+              <option>Husked coconut</option>
+              <option>Cavendish banana</option>
+              <option>Suran (elephant foot yam)</option>
+              <option>Mixed container</option>
+              <option>Other — see message</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-volume">Volume</label>
+            <input id="f-volume" name="volume" type="text" placeholder="e.g. 1 x 40 ft reefer / month">
+          </div>
+          <div class="field">
+            <label for="f-incoterm">Incoterm</label>
+            <select id="f-incoterm" name="incoterm">
+              <option>FOB</option><option>CFR</option><option>CIF</option>
+              <option>DAP</option><option>EXW</option><option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-message">Anything else we should know</label>
+          <textarea id="f-message" name="message" placeholder="Grade and calibre, packing and labelling, target month, whether you have shipped this line before…"></textarea>
+        </div>
+
+        <div class="form-status" role="status">
+          Your email app should now be open with the enquiry filled in — just press send.
+          If nothing happened, write to <a class="tlink" href="mailto:docksoverseas@gmail.com">docksoverseas@gmail.com</a>.
+        </div>
+
+        <button class="btn" type="submit">Send enquiry <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="form-note">We use your details only to answer this enquiry. No lists, no forwarding.</p>
+      </form>
+    </div>
+
+    <aside>
+      <div class="card" data-reveal style="--rd:100ms">
+        <p class="eyebrow" style="margin-bottom:1rem">Direct</p>
+        <!-- Office location below is still a placeholder — replace with your real city. -->
+        <div class="contact-line">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><strong>Email</strong><span><a class="tlink" href="mailto:docksoverseas@gmail.com">docksoverseas@gmail.com</a></span></span>
+        </div>
+        <div class="contact-line">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></span>
+          <span><strong>Phone &amp; WhatsApp</strong><span><a class="tlink" href="tel:+919740422337">+91 97404 22337</a></span><span><a class="tlink" href="tel:+919535439777">+91 95354 39777</a></span></span>
+        </div>
+        <div class="contact-line">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><strong>Office</strong><span>Bengaluru, Karnataka · India</span></span>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="--rd:180ms;margin-top:1.2rem">
+        <p class="eyebrow" style="margin-bottom:1rem">Before you write</p>
+        <details class="faq"><summary>Do you ship trial quantities?</summary><p>Yes. Most new buyers start with one container or a single air consignment, and we would rather you did.</p></details>
+        <details class="faq"><summary>Which documents do you provide?</summary><p>Commercial invoice, packing list, certificate of origin, phytosanitary certificate and bill of lading or airway bill, plus any market-specific attestation you need.</p></details>
+        <details class="faq"><summary>Can you pack under our brand?</summary><p>Yes — cartons, liners, labels and barcodes to your artwork, subject to your market's labelling rules.</p></details>
+        <details class="faq"><summary>What payment terms do you work on?</summary><p>Terms are agreed per buyer and per line. Tell us what you are used to and we will tell you honestly whether it works.</p></details>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+</main>
+
+<!--FOOTER:start-->
+<footer class="footer deep">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:1rem">
+          <img class="brand-mark" src="assets/img/logo.png" alt="" width="623" height="900">
+          <span class="brand-text">Docks <em>Overseas</em></span>
+        </a>
+        <p style="color:var(--text-dim);max-width:34ch;font-size:.95rem">
+          Fresh fruit and vegetable exporters, based in India. Farm-gate sourcing,
+          cold chain intact, one person accountable end to end.
+        </p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="produce.html">Produce</a></li>
+          <li><a href="index.html#process">How we ship</a></li>
+          <li><a href="index.html#routes">Routes</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="about.html#partners">The partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          
+          <li><a href="mailto:docksoverseas@gmail.com">docksoverseas@gmail.com</a></li>
+          <li><a href="tel:+919740422337">+91 97404 22337</a></li>
+          <li><a href="tel:+919535439777">+91 95354 39777</a></li>
+          <li><span style="color:var(--text-dim)">Bengaluru, Karnataka · India</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© <span data-year>2026</span> Docks Overseas. All rights reserved.</span>
+      <span>A partnership of Darshan KS, Sai Harsha Anne &amp; Rachana HM</span>
+    </div>
+  </div>
+</footer>
+<!--FOOTER:end-->
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
