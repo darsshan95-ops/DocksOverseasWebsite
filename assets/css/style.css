@@ -5,7 +5,7 @@
 
 :root{
   /* brand — sampled from the logo */
-  --brand:      #1b2c55;
+  --brand:      #102b59;
   --brand-2:    #2b4079;
 
   /* ground: warm paper */
@@ -13,9 +13,9 @@
   --ground-2:   #efe6d6;
   --surface:    #fffdf8;
   --surface-2:  #faf4e9;
-  --line:       rgba(27,44,85,.15);
-  --line-soft:  rgba(27,44,85,.08);
-  --film:       27,44,85;        /* rgb triplet for subtle washes over paper */
+  --line:       rgba(16,43,89,.15);
+  --line-soft:  rgba(16,43,89,.08);
+  --film:       16,43,89;        /* rgb triplet for subtle washes over paper */
 
   /* type */
   --text:       #17223d;
@@ -53,8 +53,8 @@
   --ground-2:   #e4d6bb;
   --surface:    #f4ecdc;
   --surface-2:  #efe4cf;
-  --line:       rgba(27,44,85,.17);
-  --line-soft:  rgba(27,44,85,.10);
+  --line:       rgba(16,43,89,.17);
+  --line-soft:  rgba(16,43,89,.10);
   --text-faint: #635e51;
   --gold:       #7f571a;
   --pom:        #9c3833;
@@ -335,7 +335,7 @@ p:last-child{ margin-bottom:0; }
   content:""; position:absolute; inset:0; z-index:-6;
   background:
     radial-gradient(120% 80% at 78% 6%, rgba(216,184,119,.38), transparent 58%),
-    radial-gradient(90% 70% at 10% 24%, rgba(27,44,85,.09), transparent 62%),
+    radial-gradient(90% 70% at 10% 24%, rgba(16,43,89,.09), transparent 62%),
     linear-gradient(180deg,#fdfaf3 0%,#f7f2e8 52%,#efe6d6 100%);
 }
 /* slow-breathing aurora */
@@ -431,7 +431,7 @@ p:last-child{ margin-bottom:0; }
   display:grid; place-items:center;
   border-radius:50%;
   background:radial-gradient(circle at 32% 24%, #fff, #fdfaf3 48%, #ece2cf);
-  box-shadow:var(--d3), inset 0 1px 0 #fff, 0 0 0 1px rgba(27,44,85,.05);
+  box-shadow:var(--d3), inset 0 1px 0 #fff, 0 0 0 1px rgba(16,43,89,.05);
   backdrop-filter:blur(4px);
   animation:bob var(--dur,7s) var(--ease) infinite alternate;
   animation-delay:var(--delay,0s);
@@ -484,7 +484,7 @@ p:last-child{ margin-bottom:0; }
   animation:drift linear infinite;
 }
 .wave path{ fill:currentColor; }
-.wave--1{ color:rgba(27,44,85,.10); animation-duration:26s; height:70%; }
+.wave--1{ color:rgba(16,43,89,.10); animation-duration:26s; height:70%; }
 .wave--2{ color:rgba(176,134,64,.16); animation-duration:19s; height:56%; animation-direction:reverse; }
 .wave--3{ color:#ece1cd;              animation-duration:32s; height:44%; }
 @keyframes drift{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
@@ -695,7 +695,7 @@ p:last-child{ margin-bottom:0; }
   width:100%; height:100%;
   border-radius:50%;
   background:radial-gradient(circle at 32% 24%, #fff, #fdfaf3 48%, #ece2cf);
-  box-shadow:var(--d3), inset 0 1px 0 #fff, 0 0 0 1px rgba(27,44,85,.05);
+  box-shadow:var(--d3), inset 0 1px 0 #fff, 0 0 0 1px rgba(16,43,89,.05);
   backdrop-filter:blur(4px);
   transform:scale(var(--s,1));
   transition:transform .45s var(--ease-out), box-shadow .45s var(--ease-out);
@@ -850,7 +850,7 @@ p:last-child{ margin-bottom:0; }
   animation:flow 2.4s linear infinite;
 }
 @keyframes flow{ to{ stroke-dashoffset:-24; } }
-.route-arc{ fill:none; stroke:rgba(27,44,85,.12); stroke-width:1; }
+.route-arc{ fill:none; stroke:rgba(16,43,89,.12); stroke-width:1; }
 .hub{ transform-box:fill-box; transform-origin:center; }
 .hub-pulse{ animation:pulse 2.8s var(--ease) infinite; transform-box:fill-box; transform-origin:center; }
 @keyframes pulse{
@@ -858,7 +858,7 @@ p:last-child{ margin-bottom:0; }
   70% { transform:scale(2.6); opacity:0; }
   100%{ transform:scale(2.6); opacity:0; }
 }
-.landmass{ fill:rgba(27,44,85,.055); stroke:rgba(27,44,85,.10); stroke-width:.8; }
+.landmass{ fill:rgba(16,43,89,.055); stroke:rgba(16,43,89,.10); stroke-width:.8; }
 
 /* ==========================================================================
    STATS
@@ -948,7 +948,7 @@ p:last-child{ margin-bottom:0; }
   content:""; position:absolute; inset:0; z-index:-2;
   background:
     radial-gradient(90% 70% at 80% 0%, rgba(216,184,119,.34), transparent 62%),
-    radial-gradient(80% 60% at 5% 20%, rgba(27,44,85,.07), transparent 65%),
+    radial-gradient(80% 60% at 5% 20%, rgba(16,43,89,.07), transparent 65%),
     linear-gradient(180deg,#fdfaf3,#f7f2e8);
 }
 .page-head::after{
@@ -996,7 +996,7 @@ table.spec td:first-child{ font-weight:600; }
   position:relative; aspect-ratio:1/1;
   display:grid; place-items:center;
   border-radius:var(--radius);
-  background:radial-gradient(circle at 35% 28%, var(--tint,rgba(27,44,85,.08)), rgba(27,44,85,.12));
+  background:radial-gradient(circle at 35% 28%, var(--tint,rgba(16,43,89,.08)), rgba(16,43,89,.12));
   box-shadow:inset 0 1px 0 #fff, var(--d2);
   overflow:hidden;
 }
