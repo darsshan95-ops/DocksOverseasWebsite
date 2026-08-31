@@ -381,7 +381,16 @@ p:last-child{ margin-bottom:0; }
 }
 .is-ready .reveal-words .w i{ transform:none; }
 
-.hero h1 .accent{
+/* Solid colour first. Clipping a gradient to text means the text is painted
+   with nothing but that gradient — if the clip fails the words do not fall
+   back, they disappear. This guarantees they are always readable. */
+.hero h1 .accent{ color:var(--pom); }
+
+/* Then clip the gradient per word rather than across the whole phrase. The
+   phrase is an inline element that can break across lines and whose children
+   are transformed by the reveal animation; both of those stop some engines
+   clipping reliably. Each word is its own inline-block, so neither applies. */
+.hero h1 .accent .w i{
   background:linear-gradient(100deg,var(--gold) 10%,var(--pom) 90%);
   -webkit-background-clip:text; background-clip:text;
   color:transparent;
