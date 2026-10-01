@@ -54,6 +54,36 @@ That copies the partial into all four pages. Editing the pages directly is fine
 too; just do not edit the region between `<!--SPRITE:start-->` and
 `<!--SPRITE:end-->` (or the same for `FOOTER`), because `build.sh` overwrites it.
 
+## Produce pages
+
+Each produce line has its own page — `pomegranate.html`, `chilli.html`,
+`husked-coconut.html`, `banana.html`, `suran.html` — with `produce.html` acting
+as the hub that links to all five. Search engines and AI assistants cite
+specific pages, not sections of a page, which is why the lines were split out.
+
+Every page carries:
+
+- a title and description written around how a buyer searches
+  ("Pomegranate exporter from India"), not around the product name alone
+- the full specification table — season, varieties, sizes, packing,
+  temperature, shelf life, loadability and shipping mode
+- `Product` structured data, with each specification row repeated as a
+  `PropertyValue` so an assistant can read the figures rather than guess them
+  from prose, plus `BreadcrumbList` for the Home → Produce → item path
+- an `Offer` with no price, because pricing is per enquiry. That is honest for
+  B2B and costs only the price-based rich result, which would not apply here.
+
+> **The specification figures are industry-standard defaults, not measured
+> numbers.** They were written as plausible placeholders. Check every row
+> against what Docks Overseas actually ships before pushing these pages live —
+> a buyer will quote them back at you, and an AI assistant will repeat them to
+> people you never speak to.
+
+To change a page, edit `tools/` is not involved — edit the HTML directly, or
+regenerate. The content for all five was generated from one template so they
+stay consistent; the generator lives in the session scratchpad rather than the
+repo, so direct edits are the expected way to change them from here.
+
 ## The enquiry form
 
 Configuration lives in the `ENQUIRY` block in `assets/js/main.js`. Whatever it

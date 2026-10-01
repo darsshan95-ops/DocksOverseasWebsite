@@ -5,7 +5,7 @@
 set -e
 cd "$(dirname "$0")"
 
-for page in index.html produce.html about.html contact.html privacy.html; do
+for page in *.html; do
   python3 - "$page" <<'PY'
 import re, sys, pathlib
 page = pathlib.Path(sys.argv[1])
