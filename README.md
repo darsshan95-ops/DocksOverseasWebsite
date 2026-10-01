@@ -94,11 +94,18 @@ Every page carries:
 - an `Offer` with no price, because pricing is per enquiry. That is honest for
   B2B and costs only the price-based rich result, which would not apply here.
 
-> **The specification figures are industry-standard defaults, not measured
-> numbers.** They were written as plausible placeholders. Check every row
-> against what Docks Overseas actually ships before pushing these pages live —
-> a buyer will quote them back at you, and an AI assistant will repeat them to
-> people you never speak to.
+> **The specification figures have been checked against published trade and
+> APEDA standards, but not against what Docks Overseas actually ships.** Those
+> are different things. The figures are now defensible industry norms rather
+> than invented numbers, which is as far as desk research can go.
+>
+> Still unverified and worth your eye:
+>
+> - **Suran** — no authoritative source was found for any of its rows.
+> - **Pomegranate loadability** (4,800 boxes per 40 ft reefer) — unconfirmed.
+> - **Everything company-specific** — which varieties you actually handle,
+>   the carton spec you really use, your own reefer set points. No external
+>   source can answer these.
 
 To change a page, edit `tools/` is not involved — edit the HTML directly, or
 regenerate. The content for all five was generated from one template so they
