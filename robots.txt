@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.docksoverseas.com/sitemap.xml
+
+# Plain-text summary of this site for language models
+# https://www.docksoverseas.com/llms.txt

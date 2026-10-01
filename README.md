@@ -54,6 +54,27 @@ That copies the partial into all four pages. Editing the pages directly is fine
 too; just do not edit the region between `<!--SPRITE:start-->` and
 `<!--SPRITE:end-->` (or the same for `FOOTER`), because `build.sh` overwrites it.
 
+## Machine-readable extras
+
+- **`llms.txt`** — a plain-text summary of the business, the produce lines and
+  the contact details, aimed at language models rather than browsers. It is a
+  convention rather than a standard the major crawlers commit to honouring, so
+  treat it as cheap insurance. `robots.txt` points at it.
+- **`FAQPage` schema on the contact page** — generated from the FAQ markup that
+  is actually on the page, because Google requires the two to match. After
+  editing any FAQ answer, run:
+
+  ```bash
+  python3 tools/build-faq-schema.py
+  ```
+
+  It rewrites the block between `<!--FAQ-SCHEMA:start-->` and `:end-->`.
+- **`favicon.ico`** at the root. Browsers request it whether or not the page
+  declares an icon, so without it every visit logged a 404.
+
+If a produce page, market or contact detail changes, update `llms.txt` by hand
+— nothing generates it.
+
 ## Produce pages
 
 Each produce line has its own page — `pomegranate.html`, `chilli.html`,
